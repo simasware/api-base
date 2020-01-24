@@ -1,23 +1,36 @@
 {
-  "name": "api-base",
+  "name": "ntask-api",
   "version": "1.0.0",
-  "description": "api base para novas aplicacoes",
+  "description": "NTask - estudos de Node.JS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node index.js"
+    "start": "babel-node index.js",
+    "test": "SET NODE_ENV=test && mocha test/**/*.js --require babel-core/register"
   },
-  "keywords": [
-    "api"
-  ],
+  "repository": "https://github.com/simasware/ntask-api.git",
   "author": "Fernando de Simas",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-preset-es": "^1.0.0",
     "babel-preset-es2015": "^6.24.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "braces": "^3.0.2",
     "consign": "^0.1.6",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jwt-simple": "^0.5.6",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "sequelize": "^5.21.3",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "mocha": "^7.0.0",
+    "supertest": "^4.0.2"
   }
 }
