@@ -5,7 +5,7 @@ module.exports = app => {
     .route("/user")
     .all(app.auth.authenticate())
     .get((req, res) => {
-      Users.findById(req.params.id, {
+      Users.findByPk(req.params.id, {
         attributes: ["id", "name", "email"]
       })
         .then(result => res.json(result))
@@ -20,5 +20,16 @@ module.exports = app => {
     Users.create(req.body)
       .then(result => res.json(result))
       .catch(error => res.status(412).json({ error: error.message }));
+  });
+  app.get("/user/:id", app.auth.authenticate(), (req, res) => {
+    // if (!app.auth.autenticate){
+    //   res.status(503).json({msg: "Access Denied"});
+    //   return;
+    // }
+    Users.findByPk(req.params.id, {
+      attributes: ["id", "name", "email"]
+    })
+      .then(result => res.json(result))
+      .catch(error => res.status(412).json({ msg: error.message }));
   });
 };

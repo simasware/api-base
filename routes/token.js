@@ -6,9 +6,8 @@ module.exports = app => {
   app.post("/token", async (req, res) => {
     try {
       if (req.body.email && req.body.password) {
-        const { email, password } = req.body;
-        const user = await Users.findOne({ where: { email: email } });
-
+        const { email, password } = req.body;        
+      const user = await Users.findOne({ where: { email: email } });        
         if (Users.isPassword(user.password, password)) {
           const payload = { id: user.id };
           res.json({
@@ -19,6 +18,7 @@ module.exports = app => {
       }
       res.sendStatus(401);
     } catch (e) {
+      console.log(e);
       res.sendStatus(401);
     }
   });
